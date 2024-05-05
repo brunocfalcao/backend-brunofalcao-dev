@@ -1,0 +1,28 @@
+{
+    "name": "brunocfalcao/backend-brunofalcao-dev",
+    "description": "Eduka backend - brunofalcao.dev",
+    "keywords": ["Laravel", "Bruno Falcao", "Tutorials"],
+    "homepage": "https://github.com/brunocfalcao/backend-brunofalcao-dev",
+    "license": "MIT",
+    "authors": [{
+        "name": "Bruno Falcao",
+        "email": "bruno.c.falcao@brunofalcao.me",
+        "homepage": "https://www.brunofalcao.dev",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": "^8.2",
+        "brunocfalcao/eduka-nereus": "dev-master",
+        "illuminate/support": "^10.0||^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BrunoFalcaoDev\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
