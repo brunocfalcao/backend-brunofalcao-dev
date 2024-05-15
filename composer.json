@@ -12,8 +12,7 @@
     }],
     "require": {
         "php": "^8.2",
-        "brunocfalcao/eduka-nereus": "dev-master",
-        "illuminate/support": "^10.0||^11.0"
+        "brunocfalcao/eduka-nereus": "dev-master"
     },
     "autoload": {
         "psr-4": {

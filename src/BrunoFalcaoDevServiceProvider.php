@@ -3,7 +3,6 @@
 namespace BrunoFalcaoDev;
 
 use Eduka\Abstracts\Classes\EdukaServiceProvider;
-use Illuminate\Support\Facades\Vite;
 
 final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
 {
