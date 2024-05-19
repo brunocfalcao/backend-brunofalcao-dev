@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dashboard-content-grid{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+.overflow-y-auto, .overflow-auto, body{
+	scrollbar-width: thin;
+}
+
+.dashboard-sidebar-scrollbar {
+	scrollbar-width: thin;
+    scrollbar-color: theme(colors.scrollbar.dark-foreground) theme(colors.scrollbar.dark-background);
+}

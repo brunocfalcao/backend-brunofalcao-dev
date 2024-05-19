@@ -1,17 +1,16 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import path from 'path';
-import fs from 'fs';
+import fg from 'fast-glob';
 
 export default defineConfig({
     plugins: [
-        laravel([
-            'resources/css/app.css',
-            'resources/js/app.js'
-        ]),
+        laravel(fg.sync([
+            'resources/css/**/*.css',
+            'resources/js/**/*.js'
+        ])),
     ],
     build: {
-        assetsInclude: ['**/*.woff2', '**/*.woff', '**/*.ttf'],
-        outDir: path.resolve(__dirname, `public/vendor/backend-brunofalcao-dev`),
+        outDir: path.resolve(__dirname, 'public/vendor/backend-brunofalcao-dev'),
     },
 });
