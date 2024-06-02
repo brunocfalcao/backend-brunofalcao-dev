@@ -9,11 +9,13 @@
 			<div>
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
+
 					<div>
 						<label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
 						<div class="mt-2">
 							<!-- On error (optional): add class text-red-900 ring-red-300 placeholder:text-red-300 and remove ring-gray-300 placeholder:text-gray-400 -->
-							<input id="name" value="{{ $name ?? old('name') }}" name="name" type="text" autocomplete="name" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+							<input id="name" value="{{ $name ?? old('name') }}" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 							@error('name')
 							<p class="mt-2 text-sm text-red-600">{{ $message }}</p>
 							@enderror
@@ -25,10 +27,10 @@
 						<div class="mt-2">
 							<!-- On error (optional): add class text-red-900 ring-red-300 placeholder:text-red-300 and remove ring-gray-300 placeholder:text-gray-400 -->
 							@isset($email)
-							<input disabled id="email" value="{{ $email ?? old('email') }}" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+							<input readonly id="email" value="{{ $email ?? old('email') }}" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 							<p class="mt-2 text-xs font-bold text-primary-600">Field is disabled. Just for your confirmation</p>
 							@else
-							<input id="email" value="{{ $email ?? old('email') }}" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+							<input id="email" value="{{ $email ?? old('email') }}" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 							@endisset
 							<!-- Error message -->
 							@error('email')
@@ -41,7 +43,7 @@
 						<label for="password" class="block text-sm font-medium leading-6 text-gray-900">New Password</label>
 						<div class="mt-2">
 							<!-- On error (optional): add class text-red-900 ring-red-300 placeholder:text-red-300 and remove ring-gray-300 placeholder:text-gray-400 -->
-							<input id="password" name="password" type="password" autocomplete="off" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+							<input id="password" name="password" type="password" autocomplete="off" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 							@error('password')
 							<p class="mt-2 text-sm text-red-600">{{ $message }}</p>
 							@enderror
@@ -52,7 +54,7 @@
 						<label for="password_confirmation" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
 						<div class="mt-2">
 							<!-- On error (optional): add class text-red-900 ring-red-300 placeholder:text-red-300 and remove ring-gray-300 placeholder:text-gray-400 -->
-							<input id="password_confirmation" name="password_confirmation" type="password" autocomplete="off" required class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+							<input id="password_confirmation" name="password_confirmation" type="password" autocomplete="off" class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 							<!-- Error message -->
 							@error('password_confirmation')
 							<p class="mt-2 text-sm text-red-600">{{ $message }}</p>
