@@ -36,8 +36,8 @@
 
 					<div class="flex items-center justify-between">
 						<div class="flex items-center">
-							<input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600">
-							<label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-700 cursor-pointer">Remember me</label>
+							<input id="remember" {{ old('remember') ? 'checked' : '' }} name="remember" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600">
+							<label for="remember" class="ml-3 block text-sm leading-6 text-gray-700 cursor-pointer">Remember me</label>
 						</div>
 						
 						<div class="text-sm leading-6">
