@@ -79,7 +79,7 @@
                       <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
                       <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
                       <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
-                      <x-dashboard.navbar-item title="Profile" is_active="false" url="" icon="feathericon-user" />
+                      <x-dashboard.navbar-item title="Profile" is_active="false" url="{{ route('profile') }}" icon="feathericon-user" />
                     </ul>
                   </li>
 
