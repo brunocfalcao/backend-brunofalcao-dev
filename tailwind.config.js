@@ -43,6 +43,21 @@ content: [
         'scrollbar': {
           'dark-background': '#33104b',
           'dark-foreground': '#66308a'
+        },
+        'stats': {
+          'background-1': '#E6F5F9',
+          'icon-1': '#31ADCE',
+          'background-2': '#EFFCEF',
+          'icon-2': '#76E576',
+          'background-3': '#EFF6FC',
+          'icon-3': '#4295DC',
+          'background-4': '#FAF1FE',
+          'icon-4': '#C762F4',
+        },
+        'light-background': '#F8F9FC', // #F2F2F2
+        'progress-bar': {
+          'background': '#FFF1D1',
+          'foreground': '#FFC234'
         }
       },
       screens: {

@@ -18,3 +18,75 @@
 	scrollbar-width: thin;
     scrollbar-color: theme(colors.scrollbar.dark-foreground) theme(colors.scrollbar.dark-background);
 }
+
+.flickity-prev-next-button:disabled {
+	display: none;
+}
+
+.flickity-prev-next-button {
+	@apply !w-10 !h-10 !bg-gray-900 !text-white;
+}
+
+.flickity-prev-next-button:hover, .flickity-prev-next-button:focus {
+	@apply !bg-gray-700;
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+    @apply !absolute !left-[30%] !top-[30%] !w-[40%] !h-[40%];
+}
+
+.gray-section {
+	@apply -mx-4 lg:-mx-4 p-4 lg:p-4 bg-light-background lg:rounded-2xl overflow-hidden;
+}
+
+.input {
+	@apply bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+.label {
+	@apply block mb-2 text-sm font-medium text-gray-600 dark:text-white;
+}
+
+.nice-select.styled-select {
+	@apply bg-gray-200 pl-4 pr-8 py-1 rounded-full font-medium text-gray-700 h-auto border-none;
+}
+
+.nice-select.styled-select::after{
+	@apply w-2 h-2 right-4;
+}
+
+.nice-select.styled-select .nice-select-dropdown {
+	@apply rounded-2xl;
+}
+
+.nice-select.styled-select .nice-select-dropdown li.option {
+	@apply font-medium;
+}
+
+.nice-select.styled-select .nice-select-dropdown li.option:first-child {
+	@apply rounded-t-2xl;
+}
+
+.nice-select.styled-select .nice-select-dropdown li.option:last-child {
+	@apply rounded-b-2xl;
+}
+
+.nice-select.styled-select .nice-select-dropdown li.option.selected, .nice-select.styled-select .option:hover, .nice-select .option.focus, .nice-select.styled-select .option.selected.focus {
+	@apply bg-gray-200;
+}
+
+.btn{
+	@apply flex justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+}
+
+.btn-dark {
+	@apply bg-gray-900 text-white hover:bg-gray-700 focus-visible:outline-gray-600;
+}
+
+.btn-primary {
+	@apply bg-primary-600 text-white hover:bg-primary-700 focus-visible:outline-primary-600 hover:shadow;
+}
+
+.btn-outline {
+	@apply bg-transparent border border-gray-300 text-gray-600 hover:text-gray-700 hover:shadow hover:bg-white;
+}

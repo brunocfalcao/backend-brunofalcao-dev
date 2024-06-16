@@ -12,7 +12,13 @@
     }],
     "require": {
         "php": "^8.2",
-        "brunocfalcao/eduka-nereus": "dev-master"
+        "brunocfalcao/eduka-nereus": "dev-master",
+        "blade-ui-kit/blade-heroicons": "^2.3",
+        "blade-ui-kit/blade-icons": "^1.6",
+        "brunocfalcao/blade-feather-icons": "^4.0",
+        "creativeorange/gravatar": "~1.0",
+        "owenvoke/blade-fontawesome": "^2.6",
+        "itsgoingd/clockwork": "^5.2"
     },
     "autoload": {
         "psr-4": {

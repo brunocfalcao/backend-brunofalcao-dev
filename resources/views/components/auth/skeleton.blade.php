@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ Nereus::backend()->name }}</title>
-
+    <title>Mastering Nova</title>
+	
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @vite('resources/js/navigation.js')
@@ -27,11 +27,11 @@
 <div class="flex min-h-full">
     <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 2xl:px-32">
       <div class="mx-auto w-full max-w-sm lg:w-96">
-		{{ $auth_content ?? '' }}
+		{{ $auth_content }}
       </div>
     </div>
     <div class="relative hidden flex-1 lg:block bg-white">
-      <img class="absolute top-4 left-4 right-4 bottom-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-2xl" src="{{ Vite::file('images/laravel-nova-mockup-dark.png') }}" alt="">
+      <img class="absolute top-4 left-4 right-4 bottom-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-2xl" src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80" alt="">
     </div>
   </div>  
 </body>

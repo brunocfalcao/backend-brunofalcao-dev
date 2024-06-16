@@ -2,10 +2,12 @@ $(document).ready(function(){
 	$('.episode-list-grid').flickity({
 		// options
 		cellAlign: 'left',
-		pageDots: false,
-		prevNextButtons: false,
 		wrapAround: false,
-		contain: true
+		contain: true,
+		pageDots: false, // TODO: eventually enable & add extra bottom spacing to the grid
+		prevNextButtons: true,
+		groupCells: true,
+		adaptiveHeight: true
 	});
 
 	$(document).on('click', '.fancy-toggle', function(){
@@ -24,5 +26,12 @@ $(document).ready(function(){
 			$(this).parent().find(selector).addClass('bg-gray-200').removeClass('bg-primary-600');
 			$(this).parent().find(selector + ' span').addClass('translate-x-0').removeClass('translate-x-5');
 		}
+	});
+
+	$('button[role=tab]').click(function(){
+		$(this).closest('.tabs-container').find('[role=tabpanel]').addClass('hidden');
+		$(this).closest('.tabs-container').find('#' + $(this).attr('aria-controls')).removeClass('hidden');
+		$(this).closest('.tabs-container').find('[role=tab]').attr('aria-selected', 'false');
+		$(this).attr('aria-selected', 'true');
 	});
 });

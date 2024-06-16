@@ -16,6 +16,15 @@
 		[
 			'image' => 'xxx.jpg',
 			'name' => 'Episode 1',
+			'glow': => [
+				'color' => '',
+				'thickness' => ''
+			],
+			'disabled': true/false,
+			'difficulty' => [
+				'name' => 'Chapter 1',
+				'color' => 'red'
+			],
 			'badge_left' => [
 				'url' => 'google.com',
 				'name' => 'Chapter 1',
@@ -30,6 +39,8 @@
 		[
 			'image' => 'xxx.jpg',
 			'name' => 'Episode 1',
+			'featured': true/false,
+			'disabled': true/false,
 			'badge_left' => [
 				'url' => 'google.com',
 				'name' => 'Chapter 1',
@@ -79,28 +90,44 @@
 		</div>
 	</div>
 
-	<div class="mt-4 episode-list-grid w-[calc(100%+1rem)] -mx-2">
+	<div class="mt-4 episode-list-grid w-full overflow-visible">
 		@for ($i = 0; $i < $n; $i++)
-		<a href="#" class="cursor-pointer w-full sm:w-[calc(50%-1rem)] 2xl:w-[calc(25%-1rem)] px-2 group">
-			<div class="rounded-lg relative w-full group-hover:brightness-125">
-				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-lg w-full" style="aspect-ratio: 2/1;">
-				{{-- <div class="absolute left-0 right-0 bottom-0 top-0 rounded-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.8)]"></div> --}}
-				
-				<!-- Course Completion
-				<div class="absolute left-6 right-6 bottom-4 h-1.5 rounded-full bg-white">
-					<div class="h-1.5 rounded-full bg-orange-300" style="width: 70%;"></div>
-				</div>
-				-->
-			</div>
+		<div class="w-full md:w-[30rem] mx-2">
+			<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
+				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
 
-			<h2 class="text-base font-bold text-gray-700 leading-snug mt-3">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>
-			<div class="flex items-center w-full mt-2 gap-2">
-				@if ($badge_text !== null)
-					<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700">Chapter 1</span>
-					<span class="inline-flex ml-auto items-center rounded-full px-2 py-1 text-xs font-medium bg-{{$badge_color}}-100 text-{{$badge_color}}-700">{{$badge_text}}</span>
-				@endif
-			</div>
-		</a>
+				<div class="px-6 py-10 flex flex-col justify-center">
+					<h2 class="text-lg font-bold text-gray-900 leading-snug">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>
+					<div class="flex items-center w-full gap-2 mt-2">
+						@if ($badge_text !== null)
+							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700">Chapter 1</span>
+							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-{{$badge_color}}-100 text-{{$badge_color}}-700">{{$badge_text}}</span>
+						@endif
+					</div>
+				</div>
+
+				<span class="absolute top-0 right-0 rounded-tr-2xl rounded-bl-2xl inline-flex items-center px-3 py-2 text-xs font-medium bg-green-100 text-green-700">Intermediate</span>
+			</a>
+		</div>
 		@endfor
+		{{--
+			<!-- Show horizontal overflow of slider -->
+			<style>
+				.episode-list-grid .flickity-viewport {
+					overflow: visible;
+				}
+			</style>
+		--}}
 	</div>
 </div>
+
+{{-- 
+	<div class="w-full sm:w-[calc(50%-1rem)] overflow-hidden 2xl:w-[calc(33%-1rem)] px-4 group">
+			<a class="w-full p-4 bg-red-500 cursor-pointer bg-white flex">
+				
+				<div>
+						
+				</div>
+			</a>
+		</div>
+--}}

@@ -8,36 +8,24 @@
 --}}
 @props(['title' => 'Course List', 'n' => 8, 'subtitle' => null, 'badge_color' => 'gray', 'badge_text' => null])
 <div>
-    <h2 class="text-lg lg:text-xl font-bold text-gray-900">{{ $title }}</h2>
+	<h2 class="text-lg lg:text-xl font-bold text-gray-900">{{ $title }}</h2>
 	@if ($subtitle !== null)
-	<p class="italic text-gray-700 text-base mt-1">{{ $subtitle }}</p>
+	<p class="text-gray-700 text-base mt-1">{{ $subtitle }}</p>
 	@endif
 
-	<div class="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-4 gap-y-6">
+	<div class="mt-6 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-x-4 gap-y-6">
 		@for ($i = 0; $i < $n; $i++)
-		<a href="#" class="cursor-pointer group">
-			<div class="rounded-lg relative w-full group-hover:brightness-125">
-				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-lg w-full" style="aspect-ratio: 2/1;">
-				{{-- <div class="absolute left-0 right-0 bottom-0 top-0 rounded-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.8)]"></div> --}}
-				
-				<!-- Course Completion
-				<div class="absolute left-6 right-6 bottom-4 h-1.5 rounded-full bg-white">
-					<div class="h-1.5 rounded-full bg-orange-300" style="width: 70%;"></div>
+		<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex">
+			<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
+			
+			<div class="px-6 py-4 flex flex-col justify-center">
+				<h2 class="text-lg font-bold text-gray-900 leading-snug">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>
+				<div class="flex items-center w-full gap-2 mt-2">
+					@if ($badge_text !== null)
+						<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-{{$badge_color}}-100 text-{{$badge_color}}-700">{{$badge_text}}</span>
+					@endif
 				</div>
-				-->
 			</div>
-
-			<h2 class="text-base font-bold text-gray-700 leading-snug mt-3">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>
-			{{--
-            <div class="flex items-center w-full mt-1">
-				<p class="text-sm text-gray-600">Created by Erich Andreas</p>
-				@if ($badge_text !== null)
-				<div class="flex ml-auto justify-end gap-2">
-					<span class="inline-flex ml-auto items-center rounded-full px-2 py-1 text-xs font-medium bg-{{$badge_color}}-100 text-{{$badge_color}}-700">{{$badge_text}}</span>
-				</div>
-				@endif
-			</div>
-            --}}
 		</a>
 		@endfor
 	</div>

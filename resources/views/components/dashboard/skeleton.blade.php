@@ -1,3 +1,4 @@
+@props(['sticky_content_class' => ''])
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-white">
 <head>
@@ -21,18 +22,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Flickity -->
-
     <!-- CSS -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- JavaScript -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     
+    <!-- Nice Select 2 -->
+    <script src="{{Vite::asset('resources/libraries/nice-select2/nice-select2.js')}}"></script>
+    <link rel="stylesheet" href="{{Vite::asset('resources/libraries/nice-select2/nice-select2.css')}}">
+
     <!-- Dashboard JS -->
     @vite('resources/js/dashboard.js')
 </head>
@@ -79,15 +83,15 @@
                       <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
                       <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
                       <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
-                      <x-dashboard.navbar-item title="Profile" is_active="false" url="{{ route('profile') }}" icon="feathericon-user" />
+                      <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
                     </ul>
                   </li>
 
                   <a href="#" class="mt-auto w-full">
                     <img src="{{ Vite::asset('resources/images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
                   </a>
-                  <x-dashboard.logout-link title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
-                  <p class="text-sm p-2 text-background-50 uppercase tracking-wide">All Rights Reserved<br>{{ date('Y') }} ® - {{ Nereus::backend()->name }}</p>
+                  <x-dashboard.navbar-item title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
+                  <p class="text-sm p-2 text-background-50 uppercase tracking-wide">All Rights Reserved<br>2022 ® - Lumin</p>
               </ul>
             </nav>
           </div>
@@ -114,13 +118,13 @@
                   <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
                   <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
                   <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
-                  <x-dashboard.navbar-item title="Profile" is_active="false" url="" icon="feathericon-user" />
+                  <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
                 </ul>
               </li>
               <a href="#" class="mt-auto w-full">
                 <img src="{{ Vite::asset('resources/images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
               </a>
-              <x-dashboard.logout-link title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
+              <x-dashboard.navbar-item title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
               <p class="text-sm p-2 text-background-50 uppercase tracking-wide">All Rights Reserved<br>2022 ® - Lumin</p>
           </ul>
         </nav>
@@ -141,12 +145,14 @@
     <!-- End Mobile Navbar -->
 
     <div class="lg:pl-[19rem] lg:pr-4 lg:py-4 bg-background-950">
-        <main class="lg:p-2 relative bg-white lg:rounded-2xl lg:h-[calc(100vh-2rem)] grid grid-cols-1 overflow-hidden dashboard-content-grid z-10">
-            <div class="sticky bg-white text-gray-900 z-10 top-0 px-4 pt-4 pb-2 w-full">
+        <main class="pb-2 pt-4 lg:pt-8 relative bg-white lg:rounded-2xl lg:h-[calc(100vh-2rem)] grid grid-cols-1 overflow-hidden dashboard-content-grid z-10">
+            @if($sticky_content)
+            <div class="sticky w-full bg-white text-gray-900 z-10 top-0 px-4 lg:px-6 pb-4 max-w-full min-w-0 {{ $sticky_content_class }}">
               {{ $sticky_content }}
             </div>
+            @endif
 
-            <div class="overflow-auto px-4 pb-4 pt-2">
+            <div class="overflow-auto pb-2 lg:pb-4 px-4 lg:px-6">
 				      {{ $main_content }}
             </div>
         </main>
