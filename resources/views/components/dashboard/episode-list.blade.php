@@ -94,7 +94,7 @@
 		@for ($i = 0; $i < $n; $i++)
 		<div class="w-full md:w-[30rem] mx-2">
 			<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
-				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
+				<img src="{{ Vite::file('images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
 
 				<div class="px-6 py-10 flex flex-col justify-center">
 					<h2 class="text-lg font-bold text-gray-900 leading-snug">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>

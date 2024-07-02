@@ -96,7 +96,7 @@
 
 			<div class="order-1 2xl:order-2 2xl:col-span-2">
 				<video class="w-full rounded-xl" controls>
-					<source src="{{ Vite::asset('resources/videos/example-course.mp4') }}"></source>
+					<source src="{{ Vite::file('videos/example-course.mp4') }}"></source>
 				</video>
 
 				<div class="flex gap-3 mt-6">

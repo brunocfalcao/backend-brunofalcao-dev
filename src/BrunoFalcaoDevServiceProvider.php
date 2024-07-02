@@ -12,4 +12,9 @@ final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
 
         parent::boot();
     }
+
+    public function index()
+    {
+        return "Hello";
+    }
 }

@@ -3,26 +3,12 @@
 		<x-dashboard.search-bar></x-dashboard.search-bar>
 
 		<h1 class="mt-8 text-2xl lg:text-3xl font-bold text-black">Welcome to Ultimate Learning! 👋</h1>
-
-		<!--
-		<div class="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-			@for ($i = 0; $i < 4; $i++)
-			<div class="p-6 rounded-lg bg-primary-100 flex items-center gap-2">
-				<div>
-					<p class="italic text-gray-700 text-base">Total Courses</p>
-					<p class="text-gray-900 text-2xl lg:text-3xl font-bold mt-1">123</p>
-				</div>
-				<div class="ml-auto flex-shrink-0 flex items-center justify-center w-14 h-14 bg-white text-primary-500 rounded-full">
-					@svg('heroicon-s-chart-pie', 'w-6 h-6')
-				</div>
-			</div>
-			@endfor
-		</div>
-		-->
-
 	</x-slot:sticky_content>
 
 	<x-slot:main_content>
+		@php
+		dd(Auth::user()->courses()->count());	
+		@endphp
 		<div class="mt-2 hidden md:block">
 			<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
 				<div class="relative flex items-center rounded-xl bg-stats-background-1 p-4 gap-4">

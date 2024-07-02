@@ -21,7 +21,7 @@
 			<div class="grid xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
 				<div class="xl:col-span-2">
 					<div class="mx-auto max-w-sm flex items-center flex-col">
-						<img src="{{Vite::asset('resources/images/guitar.jpg')}}" class="w-full max-w-48 rounded-full object-cover aspect-square">
+						<img src="{{Vite::file('images/guitar.jpg')}}" class="w-full max-w-48 rounded-full object-cover aspect-square">
 						<h2 class="text-3xl mt-6 font-bold">Khusan Akhmedov</h2> 
 						<p class="text-gray-500 text-xl mt-1 text-center font-medium">Web Designer</p>
 						{{--<button class="btn btn-primary mt-8 !px-8 !py-2.5 !font-normal mx-auto">Upload new avatar</button>--}}

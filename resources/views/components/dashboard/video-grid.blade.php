@@ -16,7 +16,7 @@
 	<div class="mt-6 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-x-4 gap-y-6">
 		@for ($i = 0; $i < $n; $i++)
 		<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex">
-			<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
+			<img src="{{ Vite::file('images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
 			
 			<div class="px-6 py-4 flex flex-col justify-center">
 				<h2 class="text-lg font-bold text-gray-900 leading-snug">Acoustic Guitar and Electric Guitar Lessons in 30 Minutes</h2>

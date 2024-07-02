@@ -1,7 +1,7 @@
 <x-auth.skeleton>
 	<x-slot:auth_content>
 		<div class="text-center">
-			<a href="/"><img class="h-10 w-auto mx-auto" src="{{ Vite::asset('resources/images/logo-dark.png') }}" alt="Mastering Nova"></a>
+			<a href="/"><img class="h-10 w-auto mx-auto" src="{{ Vite::file('images/logo-dark.png') }}" alt="Mastering Nova"></a>
 			<h2 class="mt-4 text-2xl font-bold leading-9 tracking-tight text-gray-900">Forgot Password</h2>
 		</div>
 	
