@@ -34,8 +34,8 @@
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     
     <!-- Nice Select 2 -->
-    <script src="{{Vite::asset('resources/libraries/nice-select2/nice-select2.js')}}"></script>
-    <link rel="stylesheet" href="{{Vite::asset('resources/libraries/nice-select2/nice-select2.css')}}">
+    <script src="{{Vite::file('libraries/nice-select2/nice-select2.js')}}"></script>
+    <link rel="stylesheet" href="{{Vite::file('libraries/nice-select2/nice-select2.css')}}">
 
     <!-- Dashboard JS -->
     @vite('resources/js/dashboard.js')
@@ -69,7 +69,7 @@
           <!-- Mobile Sidebar -->
           <div class="flex grow flex-col overflow-y-auto dashboard-sidebar-scrollbar bg-background-950 pt-4 pb-4">
             <div class="flex shrink-0 items-center px-6 mt-4">
-                <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::asset('resources/images/logo-wide.png') }}" alt="Logo"></a>
+                <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::file('images/logo-wide.png') }}" alt="Logo"></a>
             </div>
             <div class="flex bg-primary-500 text-white w-10/12 rounded-r-full py-2 px-6 text-base mt-8">
                 Hello, Raznik
@@ -88,7 +88,7 @@
                   </li>
 
                   <a href="#" class="mt-auto w-full">
-                    <img src="{{ Vite::asset('resources/images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
+                    <img src="{{ Vite::file('images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
                   </a>
                   <x-dashboard.navbar-item title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
                   <p class="text-sm p-2 text-background-50 uppercase tracking-wide">All Rights Reserved<br>2022 ® - Lumin</p>
@@ -104,7 +104,7 @@
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex grow flex-col overflow-y-auto dashboard-sidebar-scrollbar bg-background-950 pt-4 pb-4">
         <div class="flex shrink-0 items-center px-6 mt-4">
-          <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::asset('resources/images/logo-wide.png') }}" alt="Logo"></a>
+          <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::file('images/logo-wide.png') }}" alt="Logo"></a>
         </div>
         <div class="flex bg-primary-500 text-white w-10/12 rounded-r-full py-2 px-6 text-base mt-8">
             Hello, Raznik
@@ -122,7 +122,7 @@
                 </ul>
               </li>
               <a href="#" class="mt-auto w-full">
-                <img src="{{ Vite::asset('resources/images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
+                <img src="{{ Vite::file('images/Perk2.png') }}" alt="Perk" class="w-full rounded-lg">
               </a>
               <x-dashboard.navbar-item title="Logout" is_active="false" url="" icon="feathericon-arrow-left-circle" />
               <p class="text-sm p-2 text-background-50 uppercase tracking-wide">All Rights Reserved<br>2022 ® - Lumin</p>
@@ -133,7 +133,7 @@
   
     <!-- Start Mobile Navbar -->
     <div class="lg:hidden sticky bg-background-950 text-white top-0 p-4 w-full flex items-center z-20">  
-        <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::asset('resources/images/logo-wide.png') }}" alt="Logo"></a>
+        <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::file('images/logo-wide.png') }}" alt="Logo"></a>
 
         <button type="button" class="text-white cursor-pointer ml-auto" onclick="open_sidebar();">
             <span class="sr-only">Open sidebar</span>
