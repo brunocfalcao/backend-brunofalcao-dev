@@ -9,6 +9,7 @@ app/storage/
 
 # Public folder is a symlink
 public/
+public
 
 storage/*.key
 .env
