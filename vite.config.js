@@ -20,4 +20,7 @@ export default defineConfig({
             "public/vendor/backend-brunofalcao-dev"
         ),
     },
+    server: {
+        host: 'localhost'
+    }
 });
