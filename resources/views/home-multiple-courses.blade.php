@@ -1,4 +1,4 @@
-<x-dashboard.skeleton>
+Multiple courses<x-dashboard.skeleton>
 	<x-slot:sticky_content>
 		<x-dashboard.search-bar></x-dashboard.search-bar>
 
@@ -69,8 +69,8 @@
 				@svg('heroicon-s-document-text', 'h-9 w-9 text-primary-600 mt-0.5 -ml-[0.15rem]')
 
 				<div>
-					<h2 class="text-2xl lg:text-3xl font-bold text-black">My Courses</h2>
-					<p class="text-gray-700 text-base mt-2">Below are your classes which are active</p>
+					<h2 class="text-2xl lg:text-3xl font-bold text-black">{{ $course->name }}</h2>
+					<p class="text-gray-700 text-base mt-2">Browse course chapters below</p>
 				</div>
 
 				<div class="ml-auto hidden sm:block">
@@ -85,9 +85,14 @@
 			</div>
 
 			<div class="space-y-6 mt-8">
+				@foreach ($course->chapters()->with('episodes')->get() as $chapter)
+					<x-dashboard.episode-list :chapter="$chapter" />
+				@endforeach
+				
+				{{-- 
 				<x-dashboard.episode-list title="Instruments" badge_text="Intermediate" badge_color="gray" subtitle="Cool Instruments!" n="4" />
 				<x-dashboard.episode-list title="Pilot Training" badge_text="Easy" badge_color="green" n="16" />
-				<x-dashboard.episode-list title="Website Design" badge_color="primary" n="8" />
+				--}}
 			</div>
 		</div>
 	</x-slot:main_content>
