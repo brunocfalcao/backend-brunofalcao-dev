@@ -1,17 +1,4 @@
 $(document).ready(function () {
-    $(".episode-list-grid").flickity({
-        // options
-        cellAlign: "left",
-        wrapAround: false,
-        contain: true,
-        pageDots: false, // TODO: eventually enable & add extra bottom spacing to the grid
-        prevNextButtons: true,
-        groupCells: true,
-        adaptiveHeight: true,
-        resize: true,
-        imagesLoaded: true,
-    });
-
     $(document).on("click", ".fancy-toggle", function () {
         let selector = "input[name=" + $(this).attr("data-controls") + "]";
         $(this)
@@ -21,7 +8,9 @@ $(document).ready(function () {
         $(this).parent().find(selector).trigger("change");
     });
 
-    $(document).on("change", "input[type=checkbox]", function () {
+    $(document).on("change", "input[type=checkbox]", function (e) {
+        console.log("CHANGED!");
+        console.log(e.target.value);
         let name = $(this).attr("name");
         let selector = ".fancy-toggle[data-controls=" + name + "]";
         if ($(this).prop("checked")) {

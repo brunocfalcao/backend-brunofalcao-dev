@@ -27,8 +27,9 @@
 			</div>
 
 			<div class="space-y-8 mt-8">
+				
 				@foreach ($course->chapters()->with('episodes')->get() as $chapter)
-					<x-dashboard.episode-list :chapter="$chapter" />
+					<livewire:chapter-episodes :key="$chapter->id" :chapter="$chapter" />
 				@endforeach
 				
 				{{-- 
