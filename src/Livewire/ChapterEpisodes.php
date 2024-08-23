@@ -8,10 +8,8 @@ class ChapterEpisodes extends Component
 {
     public $chapter;
     public $episodes;
-    public $hide_completed = false;
-    public $only_new = false;
-
-    public $count = 0;
+    public $hideCompleted = false;
+    public $onlyNew = false;
 
     public function mount($chapter)
     {
@@ -21,17 +19,16 @@ class ChapterEpisodes extends Component
 
     public function setupEpisodeQuery()
     {
-        // set episodes based on hide completed and only new
-
-    }
-
-    public function setHideCompleted($hide_completed)
-    {
-        $this->hide_completed = $hide_completed;
+        if ($this->hideCompleted)
+            $this->episodes = $this->chapter->episodes->skip(1);
+        else
+            $this->episodes = $this->chapter->episodes;
     }
 
     public function render()
     {
+        $this->setupEpisodeQuery();
+        $this->dispatch('render');
         return view('backend::livewire.chapter-episodes');
     }
 }

@@ -65,46 +65,13 @@
 			@endif
 		</div>
 		<div class="mt-3 ml-auto flex flex-col flex-shrink-0 md:items-start gap-4">
-			<div class="flex items-center">
-                @if ($hide_completed == true)
-                    Hide completed is true!
-                @else
-                    Hide completed is false! 
-                @endif 
-                
-                <div wire:loading> 
-                    Saving post...
-                </div>
-
-                {{ $count }}
-                <button wire:click="increment">Increment</button>
-
-				<!-- Enabled: "bg-primary-600", Not Enabled: "bg-gray-200" -->
-				<button type="button" wire:click="setHideCompleted(true);" data-controls="hide-completed" class="fancy-toggle bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="annual-billing-label">
-				  <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-				  <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-				</button>
-				<input type="checkbox" name="hide-completed" class="hidden">
-				<span class="ml-3 text-sm hidden sm:inline" id="annual-billing-label">
-				  <span class="font-medium text-gray-900">Hide Completed</span>
-				</span>
-			</div>
-			<div class="flex items-center">
-				<!-- Enabled: "bg-primary-600", Not Enabled: "bg-gray-200" -->
-				<button type="button" data-controls="only-new" class="fancy-toggle bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="annual-billing-label">
-				  <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-				  <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-				</button>
-				<input type="checkbox" name="only-new" checked class="hidden">
-				<span class="ml-3 text-sm hidden sm:inline" id="annual-billing-label">
-				  <span class="font-medium text-gray-900">Only New</span>
-				</span>
-			</div>
+			<x-dashboard.toggle title="Hide Completed" class="text-red-500" name="hide-completed" :checked="$hideCompleted" wire:model.live="hideCompleted" />
+			<x-dashboard.toggle title="Only New" name="only-new" :checked="$onlyNew" wire:model.live="onlyNew" />
 		</div>
 	</div>
 
-	<div class="mt-6 episode-list-grid w-full overflow-visible">
-		@foreach ($chapter->episodes as $episode)
+	<div class="hidden episode-list-grid-preload">
+		@foreach ($episodes as $episode)
 		<div class="w-full md:w-[30rem] mx-2">
 			<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
 				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
@@ -123,6 +90,10 @@
 			</a>
 		</div>
 		@endforeach
+	</div>
+
+	<div class="mt-6 episode-list-grid w-full overflow-visible" wire:ignore>
+		Loading...
 		{{--
 			<!-- Show horizontal overflow of slider -->
 			<style>
@@ -136,21 +107,33 @@
 
 @script
 <script>
-    console.log("HELLO!");
-    // This Javascript will get executed every time this component is loaded onto the page...
-    $('input[type=checkbox]').trigger('change');
+	let flickityOptions = {
+		// options
+		cellAlign: "left",
+		wrapAround: false,
+		contain: true,
+		pageDots: false, // TODO: eventually enable & add extra bottom spacing to the grid
+		prevNextButtons: true,
+		groupCells: true,
+		adaptiveHeight: true,
+		resize: true,
+		imagesLoaded: true,
+	};
 
-    var x = $(".episode-list-grid").flickity({
-        // options
-        cellAlign: "left",
-        wrapAround: false,
-        contain: true,
-        pageDots: false, // TODO: eventually enable & add extra bottom spacing to the grid
-        prevNextButtons: true,
-        groupCells: true,
-        adaptiveHeight: true,
-        resize: true,
-        imagesLoaded: true,
+	let $carousel = null;
+	
+	$wire.on('render', () => {
+		setTimeout(() => {
+			console.log("Rebuild!");
+			if($carousel != null)
+				$carousel.flickity('destroy');
+			$($wire.el).find(".episode-list-grid").html($($wire.el).find('.episode-list-grid-preload').html());
+			$carousel = $($wire.el).find(".episode-list-grid").flickity(flickityOptions);
+		}, 100);
     });
+
+ 	$($wire.el).find('input[type=checkbox]').change(function(){
+		$wire.set($(this).attr('wire:model.live'), $(this).prop('checked'));
+	});
 </script>
 @endscript
