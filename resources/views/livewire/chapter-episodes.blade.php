@@ -9,7 +9,6 @@
 --}}
 
 {{--
-
 	Episode List
 
 	'episodes' => [
@@ -55,7 +54,7 @@
 	]
 --}}
 
-@props(['chapter' => null, 'badge_color' => 'blue', 'badge_text' => "Seen"])
+@props(['chapter' => null])
 <div>
 	<div class="w-full flex items-center">
 		<div>
@@ -79,9 +78,14 @@
 				<div class="px-6 py-10 flex flex-col justify-center">
 					<h2 class="text-lg font-bold text-gray-900 leading-snug">{{$episode->name}}</h2>
 					<div class="flex items-center w-full gap-2 mt-2">
-						@if ($badge_text !== null)
-							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700">15m 5s</span>
-							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-{{$badge_color}}-100 text-{{$badge_color}}-700">{{$badge_text}}</span>
+						<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700">{{$episode->duration_for_humans}}</span>
+							
+						@if ($episode->is_seen)
+							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700">Seen</span>
+						@endif
+						
+						@if ($episode->is_new)
+							<span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium bg-green-100 text-green-700">New</span>
 						@endif
 					</div>
 				</div>
@@ -124,7 +128,6 @@
 	
 	$wire.on('render', () => {
 		setTimeout(() => {
-			console.log("Rebuild!");
 			if($carousel != null)
 				$carousel.flickity('destroy');
 			$($wire.el).find(".episode-list-grid").html($($wire.el).find('.episode-list-grid-preload').html());

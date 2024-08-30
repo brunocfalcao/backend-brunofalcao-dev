@@ -79,10 +79,11 @@
                   <li>
                     <ul role="list" class="-mx-2 space-y-1">
                       <x-dashboard.navbar-item title="Dashboard" is_active="true" url="" icon="feathericon-home" />
-                      <x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
+                      {{--<x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
                       <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
                       <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
                       <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
+                      --}}
                       <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
                     </ul>
                   </li>
@@ -114,10 +115,11 @@
               <li>
                 <ul role="list" class="-mx-2 space-y-1">
                   <x-dashboard.navbar-item title="Dashboard" is_active="true" url="" icon="feathericon-home" />
-                  <x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
+                  {{--<x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
                   <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
                   <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
                   <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
+                  --}}
                   <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
                 </ul>
               </li>
