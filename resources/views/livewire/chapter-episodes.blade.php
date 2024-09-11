@@ -54,6 +54,14 @@
 	]
 --}}
 
+@php
+$difficulty_badge_classes = [
+	'easy' => 'text-blue-700 bg-blue-100',
+	'medium' => 'text-green-700 bg-green-100',
+	'hard' => 'text-yellow-700 bg-yellow-100'
+]
+@endphp
+
 @props(['chapter' => null])
 <div>
 	<div class="w-full flex items-center">
@@ -72,7 +80,7 @@
 	<div class="hidden episode-list-grid-preload">
 		@foreach ($episodes as $episode)
 		<div class="w-full md:w-[30rem] mx-2">
-			<a href="#" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
+			<a href="{{ route('episode.play', $episode->uuid) }}" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
 				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
 
 				<div class="px-6 py-10 flex flex-col justify-center">
@@ -90,7 +98,9 @@
 					</div>
 				</div>
 
-				<span class="absolute top-0 right-0 rounded-tr-2xl rounded-bl-2xl inline-flex items-center px-3 py-2 text-xs font-medium bg-green-100 text-green-700">Intermediate</span>
+				<span class="absolute top-0 right-0 rounded-tr-2xl rounded-bl-2xl inline-flex items-center px-3 py-2 text-xs capitalize font-medium {{$difficulty_badge_classes[$episode->difficulty_canonical]}}">
+					{{$episode->difficulty_canonical}}
+				</span>
 			</a>
 		</div>
 		@endforeach
