@@ -7,6 +7,7 @@ use Eduka\Abstracts\Classes\EdukaServiceProvider;
 use Livewire\Mechanisms\ComponentRegistry;
 
 use BrunoFalcaoDev\Livewire\ChapterEpisodes;
+use BrunoFalcaoDev\Livewire\WatchEpisode;
 
 final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
 {
@@ -15,6 +16,7 @@ final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
         $this->dir = __DIR__;
 
         Livewire::component('chapter-episodes', ChapterEpisodes::class);
+        Livewire::component('watch-episode', WatchEpisode::class);
 
         parent::boot();
     }
