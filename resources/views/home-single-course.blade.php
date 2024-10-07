@@ -1,6 +1,6 @@
 <x-dashboard.skeleton>
 	<x-slot:sticky_content>
-		<x-dashboard.search-bar></x-dashboard.search-bar>
+		<livewire:global-search />
 	</x-slot:sticky_content>
 
 	<x-slot:main_content>

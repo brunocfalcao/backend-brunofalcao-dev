@@ -1,6 +1,6 @@
 Multiple courses<x-dashboard.skeleton>
 	<x-slot:sticky_content>
-		<x-dashboard.search-bar></x-dashboard.search-bar>
+		<livewire:global-search />
 
 		<h1 class="mt-8 text-2xl lg:text-3xl font-bold text-black">Welcome to Ultimate Learning! 👋</h1>
 

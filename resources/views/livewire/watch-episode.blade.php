@@ -6,7 +6,7 @@
         <div class="w-full rounded-xl bg-background-950 p-6 flex items-center gap-2 mt-6">
             <div class="w-full">
                 <p class="text-white font-bold text-large">Progress</p>
-                <p class="text-white opacity-50 text-sm font-semibold mt-1.5">{{$course->seen_episode_count}}/{{$course->episode_count}} Lectures Completed</p>
+                <p class="text-white opacity-50 text-xs font-semibold mt-1.5">{{$course->seen_episode_count}} out of {{$course->episode_count}} Completed</p>
             </div>
 
             <div class="w-full">
@@ -117,6 +117,7 @@
             <p class="text-gray-600 font-medium text-sm">{{$chapter->name}} • ({{$episode->index}}/{{$chapter->episode_count}})</p>
             <h2 class="text-black text-xl lg:text-2xl font-semibold mt-1">{{$episode->name}}</h2>
         </div>
+        @isset($episode->description)
         <div class="mt-6">
             <p class="text-gray-600 font-normal text-sm mt-1.5">{{$episode->description}}</p>
             {{--
@@ -152,5 +153,6 @@
             </div>
         --}}
         </div>
+        @endisset
     </div>
 </div>

@@ -8,6 +8,7 @@ use Livewire\Mechanisms\ComponentRegistry;
 
 use BrunoFalcaoDev\Livewire\ChapterEpisodes;
 use BrunoFalcaoDev\Livewire\WatchEpisode;
+use BrunoFalcaoDev\Livewire\GlobalSearch;
 
 final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
 {
@@ -17,6 +18,7 @@ final class BrunoFalcaoDevServiceProvider extends EdukaServiceProvider
 
         Livewire::component('chapter-episodes', ChapterEpisodes::class);
         Livewire::component('watch-episode', WatchEpisode::class);
+        Livewire::component('global-search', GlobalSearch::class);
 
         parent::boot();
     }
