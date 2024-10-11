@@ -1,4 +1,4 @@
-<x-dashboard.skeleton>
+<x-dashboard.skeleton :activeCourse="$course">
 	<x-slot:sticky_content>
 		<livewire:global-search />
 	</x-slot:sticky_content>

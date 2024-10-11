@@ -1,4 +1,4 @@
-@props(['sticky_content_class' => ''])
+@props(['courses' => [], 'activeCourse' => null, 'sticky_content_class' => ''])
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-white">
 <head>
@@ -78,13 +78,11 @@
                 <ul role="list" class="flex flex-1 flex-col gap-y-4">
                   <li>
                     <ul role="list" class="-mx-2 space-y-1">
-                      <x-dashboard.navbar-item title="Dashboard" is_active="true" url="" icon="feathericon-home" />
-                      {{--<x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
-                      <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
-                      <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
-                      <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
-                      --}}
-                      <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
+                      {{--<x-dashboard.navbar-item title="Dashboard" is_active="true" url="/home" icon="feathericon-home" />--}}
+                      @foreach ($courses as $course)
+                      <x-dashboard.navbar-item :title="$course->name" :is_active="$activeCourse !== null && $course->canonical == $activeCourse->canonical" :url="route('course.view', $course->canonical)" icon="heroicon-o-film" />
+                      @endforeach
+                      <x-dashboard.navbar-item title="Profile" :is_active="false" url="/profile" icon="feathericon-user" />
                     </ul>
                   </li>
 
@@ -114,12 +112,10 @@
           <ul role="list" class="flex flex-1 flex-col gap-y-4">
               <li>
                 <ul role="list" class="-mx-2 space-y-1">
-                  <x-dashboard.navbar-item title="Dashboard" is_active="true" url="" icon="feathericon-home" />
-                  {{--<x-dashboard.navbar-item title="Explore" is_active="false" url="" icon="feathericon-sunrise" />
-                  <x-dashboard.navbar-item title="My Classes" is_active="false" url="" icon="feathericon-play-circle" />
-                  <x-dashboard.navbar-item title="Chat Rooms" is_active="false" url="" icon="feathericon-message-square" />
-                  <x-dashboard.navbar-item title="Activity" is_active="false" url="" icon="feathericon-heart" />
-                  --}}
+                  {{--<x-dashboard.navbar-item title="Dashboard" is_active="true" url="" icon="feathericon-home" />--}}
+                  @foreach ($courses as $course)
+                  <x-dashboard.navbar-item :title="$course->name" :is_active="$activeCourse !== null && $course->canonical == $activeCourse->canonical" :url="route('course.view', $course->canonical)" icon="heroicon-o-film" />
+                  @endforeach
                   <x-dashboard.navbar-item title="Profile" is_active="false" url="/profile/" icon="feathericon-user" />
                 </ul>
               </li>
@@ -146,7 +142,7 @@
     </div>
     <!-- End Mobile Navbar -->
 
-    <div class="lg:pl-[19rem] lg:pr-4 lg:py-4 bg-background-950">
+    <div class="lg:pl-[18rem] lg:pr-4 lg:py-4 bg-background-950">
         <main class="pb-2 pt-4 lg:pt-8 relative bg-white lg:rounded-2xl lg:h-[calc(100vh-2rem)] grid grid-cols-1 overflow-hidden dashboard-content-grid z-10">
             @if($sticky_content)
             <div class="sticky w-full bg-white text-gray-900 z-10 top-0 px-4 lg:px-6 pb-4 max-w-full min-w-0 {{ $sticky_content_class }}">

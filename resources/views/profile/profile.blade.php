@@ -18,46 +18,27 @@
 
 	<x-slot:main_content>
 		<div class="w-full rounded-2xl p-6 sm:p-10 bg-light-background">
-			<div class="grid xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
-				<div class="xl:col-span-2">
-					<div class="mx-auto max-w-sm flex items-center flex-col">
-						<img src="{{Vite::asset('resources/images/guitar.jpg')}}" class="w-full max-w-48 rounded-full object-cover aspect-square">
-						<h2 class="text-3xl mt-6 font-bold">Khusan Akhmedov</h2> 
-						<p class="text-gray-500 text-xl mt-1 text-center font-medium">Web Designer</p>
-						{{--<button class="btn btn-primary mt-8 !px-8 !py-2.5 !font-normal mx-auto">Upload new avatar</button>--}}
-
-						<p class="text-gray-500 text-xl mt-8 text-center font-medium">Uzbekistan, Tashkent</p>
-						<p class="text-gray-500 text-large mt-3 text-center">I’m a web designer, I work in programs like Figma, Adobe Photoshop, Adobe Illustrator</p>
+				<form class="max-w-xl">
+					<h2 class="text-lg font-semibold text-gray-900">Your Profile</h2>
+					<div class="mt-2 grid xs:grid-cols-2 gap-4">
+						<div class="xs:col-span-2">
+							<label for="full-name" class="label">Full Name</label>
+							<input type="text" name="full-name" id="full-name" autocomplete="off" placeholder="Tom Cook" class="input" required />
+						</div>
+						<div>
+							<label for="email" class="label">Email</label>
+							<input type="email" name="email" id="email" autocomplete="off" placeholder="tom.cook@example.com" class="input" required />
+						</div>
+						<div>
+							<label for="phone" class="label">Phone number</label>
+							<input type="text" name="phone" id="phone" autocomplete="off" placeholder="+1 123 123 123" class="input" required />
+						</div>
 					</div>
-				</div>
-				<div class="xl:col-span-3">
-					<form class="mx-auto max-w-xl">
-						<div class="pt-8 grid xs:grid-cols-2 gap-4">
-							<div class="xs:col-span-2">
-								<label for="full-name" class="label">Full Name</label>
-								<input type="text" name="full-name" id="full-name" autocomplete="off" placeholder="Tom Cook" class="input" required />
-							</div>
-							<div>
-								<label for="email" class="label">Email</label>
-								<input type="email" name="email" id="email" autocomplete="off" placeholder="tom.cook@example.com" class="input" required />
-							</div>
-							<div>
-								<label for="password" class="label">Password</label>
-								<input type="password" name="password" id="password" autocomplete="off" placeholder="********" class="input" required />
-							</div>
-							
-							<div class="xs:col-span-2">
-								<label for="about" class="label">About me</label>
-								<textarea name="about" id="about" autocomplete="off" class="input" placeholder="Let me cook" rows="5" required></textarea>
-							</div>
-						</div>
-						<div class="flex items-center justify-between gap-4 mt-4">
-							<button class="btn btn-outline !px-6">Cancel</button>
-							<button class="btn btn-primary !px-8">Save</button>
-						</div>
-					</form>
-				</div>
-			</div>
+					<div class="flex items-center justify-between gap-4 mt-4">
+						<button class="btn btn-outline !px-6">Cancel</button>
+						<button class="btn btn-primary !px-8">Save</button>
+					</div>
+				</form>
 		</div>  
 	</x-slot:main_content>
 </x-dashboard.skeleton>

@@ -12,11 +12,13 @@ class ChapterEpisodes extends Component
     public $episodes;
     public $hideCompleted = false;
     public $onlyNew = false;
+    public $showTitle = true;
 
-    public function mount($chapter)
+    public function mount($chapter, $showTitle = true)
     {
         $this->chapter = $chapter;
         $this->episodes = $chapter->episodes; // lets us filter later
+        $this->showTitle = $showTitle;
     }
 
     public function setupEpisodeQuery()
