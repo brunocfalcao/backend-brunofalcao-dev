@@ -12,12 +12,16 @@ class WatchEpisode extends Component
     public $chapter;
     public $course;
     public $courseChapters;
-    public $isSaved = false;
+    public $next_episode;
+    public $previous_episode;
 
     public function markEpisodeAsSeen()
     {
         $student = Auth::user();
         $student->markEpisodeAsSeen($this->episode);
+
+        if (isset($this->next_episode))
+            $this->redirectRoute('episode.play', ['episode' => $this->next_episode]);
     }
 
     public function unmarkEpisodeAsSeen()
@@ -26,14 +30,16 @@ class WatchEpisode extends Component
         $student->unmarkEpisodeAsSeen($this->episode);
     }
 
-    public function saveEpisode()
+    public function bookmarkEpisode()
     {
-        $this->isSaved = true;
+        $student = Auth::user();
+        $student->bookmarkEpisode($this->episode);
     }
 
-    public function unsaveEpisode()
+    public function unbookmarkEpisode()
     {
-        $this->isSaved = false;
+        $student = Auth::user();
+        $student->unbookmarkEpisode($this->episode);
     }
 
     public function mount(Episode $episode)
@@ -45,6 +51,9 @@ class WatchEpisode extends Component
     {
         $course = $this->episode->course()->first();
 
+        $this->next_episode = null;
+        $this->previous_episode = null;
+
         $student = Auth::user();
 
         $chaptersQuery = $course->chapters()->with('episodes')->get();
@@ -54,7 +63,6 @@ class WatchEpisode extends Component
         $course->episode_count = 0;
         $course->chapter_count = count($chaptersQuery);
         $course->seen_episode_count = 0;
-        $course->total_duration = 0;
 
         $previousEpisode = null;
         $previousEpisodeIsCurrent = false;
@@ -66,11 +74,11 @@ class WatchEpisode extends Component
 
             foreach ($currentChapter->episodes as $currentEpisode) {
                 $course->episode_count += 1;
-                $course->total_duration += $currentEpisode->duration;
                 $currentChapter->episode_count += 1;
 
                 $currentEpisode->is_current = ($currentEpisode->id == $this->episode->id);
                 $currentEpisode->is_seen = $student->isEpisodeSeen($currentEpisode);
+                $currentEpisode->is_bookmarked = $student->isEpisodeBookmarked($currentEpisode);
 
                 if ($currentEpisode->is_seen) {
                     $course->seen_episode_count += 1;
@@ -79,12 +87,12 @@ class WatchEpisode extends Component
                 }
 
                 if ($previousEpisodeIsCurrent) {
-                    $this->episode->next_episode = $currentEpisode;
+                    $this->next_episode = $currentEpisode;
                 }
 
                 if ($currentEpisode->is_current) {
                     $currentChapter->is_current = true;
-                    $this->episode->previous_episode = $previousEpisode;
+                    $this->previous_episode = $previousEpisode;
                     $previousEpisodeIsCurrent = true;
                 } else {
                     $previousEpisodeIsCurrent = false;
@@ -100,15 +108,13 @@ class WatchEpisode extends Component
             $course->episode_count == 0 ? 100
             : intval(100 * $course->seen_episode_count / $course->episode_count));
 
-        $course->duration_for_humans = '3h 15m';
-
         // set annotated chapter
         foreach ($chapters as $chapter)
             if ($chapter->is_current)
                 $this->chapter = $chapter;
 
-        $this->episode->is_seen = $this->episode->wasSeenByStudent($student);
-        $this->episode->is_saved = $this->isSaved;
+        $this->episode->is_seen = $student->isEpisodeSeen($this->episode);
+        $this->episode->is_bookmarked = $student->isEpisodeBookmarked($this->episode);
         $this->courseChapters = $chapters;
         $this->course = $course;
     }

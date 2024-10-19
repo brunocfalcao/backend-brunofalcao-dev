@@ -9,8 +9,6 @@ $(document).ready(function () {
     });
 
     $(document).on("change", "input[type=checkbox]", function (e) {
-        console.log("CHANGED!");
-        console.log(e.target.value);
         let name = $(this).attr("name");
         let selector = ".fancy-toggle[data-controls=" + name + "]";
         if ($(this).prop("checked")) {

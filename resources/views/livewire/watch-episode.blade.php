@@ -87,25 +87,25 @@
                 @svg('heroicon-o-check-circle', 'h-6 w-6 text-gray-500')
             </button>
             @endif 
-            @if($episode->is_saved)
-            <button wire:click="unsaveEpisode" class="p-3 bg-light-background rounded-xl hover:brightness-95">
+            @if($episode->is_bookmarked)
+            <button wire:click="unbookmarkEpisode" class="p-3 bg-light-background rounded-xl hover:brightness-95">
                 @svg('heroicon-s-bookmark', 'h-6 w-6 text-primary-500')
             </button>
             @else
-            <button wire:click="saveEpisode" class="p-3 bg-light-background rounded-xl hover:brightness-95">
+            <button wire:click="bookmarkEpisode" class="p-3 bg-light-background rounded-xl hover:brightness-95">
                 @svg('heroicon-o-bookmark', 'h-6 w-6 text-gray-500')
             </button>
             @endif
     
-            <a @isset($episode->previous_episode) href="{{ route('episode.play', $episode->previous_episode->uuid) }}" @endisset class="ml-auto p-4 rounded-xl @if(isset($episode->previous_episode)) bg-primary-100 hover:brightness-95 @else bg-primary-50 @endif">
-                @if(isset($episode->previous_episode))
+            <a @isset($previous_episode) href="{{ route('episode.play', $previous_episode->uuid) }}" @endisset class="ml-auto p-4 rounded-xl @if(isset($previous_episode)) bg-primary-100 hover:brightness-95 @else bg-primary-50 @endif">
+                @if(isset($previous_episode))
                 @svg('heroicon-s-play', 'h-4 w-4 rotate-180 text-primary-500')
                 @else
                 @svg('heroicon-s-play', 'h-4 w-4 rotate-180 text-primary-300')
                 @endif 
             </a>
-            <a @isset($episode->next_episode) href="{{ route('episode.play', $episode->next_episode->uuid) }}" @endisset class="p-4 rounded-xl @if(isset($episode->next_episode)) bg-primary-100 hover:brightness-95 @else bg-primary-50 @endif">
-                @if(isset($episode->next_episode))
+            <a @isset($next_episode) href="{{ route('episode.play', $next_episode->uuid) }}" @endisset class="p-4 rounded-xl @if(isset($next_episode)) bg-primary-100 hover:brightness-95 @else bg-primary-50 @endif">
+                @if(isset($next_episode))
                 @svg('heroicon-s-play', 'h-4 w-4 text-primary-500')
                 @else
                 @svg('heroicon-s-play', 'h-4 w-4 text-primary-300')

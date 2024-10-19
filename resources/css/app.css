@@ -24,7 +24,7 @@
 }
 
 .flickity-prev-next-button {
-	@apply !w-10 !h-10 !bg-gray-900 !text-white;
+	@apply !w-10 !h-10 !bg-gray-600 !text-white opacity-50;
 }
 
 .flickity-prev-next-button:hover, .flickity-prev-next-button:focus {

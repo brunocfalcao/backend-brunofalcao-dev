@@ -78,8 +78,8 @@ $difficulty_badge_classes = [
 	</div>
 
 	<div class="hidden episode-list-grid-preload">
-		@foreach ($episodes as $episode)
-		<div class="w-full md:w-[30rem] mx-2">
+		@forelse ($episodes as $episode)
+		<div class="w-full md:w-[30rem] mr-4">
 			<a href="{{ route('episode.play', $episode->uuid) }}" class="cursor-pointer w-full bg-white group rounded-2xl overflow-hidden flex relative">
 				<img src="{{ Vite::asset('resources/images/guitar.jpg') }}" class="rounded-l-2xl w-1/3 flex-shrink-1 object-cover group-hover:brightness-105" style="aspect-ratio: 1/1;">
 
@@ -103,7 +103,9 @@ $difficulty_badge_classes = [
 				</span>
 			</a>
 		</div>
-		@endforeach
+		@empty
+		No results found. You can manage your filters in the top right.
+		@endforelse
 	</div>
 
 	<div class="mt-6 episode-list-grid w-full overflow-visible" wire:ignore>

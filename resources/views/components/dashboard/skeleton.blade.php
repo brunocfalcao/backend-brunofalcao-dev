@@ -99,16 +99,16 @@
     </div>
   
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[17rem] lg:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex grow flex-col overflow-y-auto dashboard-sidebar-scrollbar bg-background-950 pt-4 pb-4">
-        <div class="flex shrink-0 items-center px-6 mt-4">
+        <div class="flex shrink-0 items-center px-4 mt-4">
           <a href="{{ url('/') }}"><img class="h-8 w-auto" src="{{ Vite::file('images/logo-wide.png') }}" alt="Logo"></a>
         </div>
-        <div class="flex bg-primary-500 text-white w-10/12 rounded-r-full py-2 px-6 text-base mt-8">
+        <div class="flex bg-primary-500 text-white w-10/12 rounded-r-full py-2 px-4 text-base mt-8">
             Hello, Raznik
         </div>
-        <nav class="flex flex-1 flex-col px-6 mt-6">
+        <nav class="flex flex-1 flex-col px-4 mt-6">
           <ul role="list" class="flex flex-1 flex-col gap-y-4">
               <li>
                 <ul role="list" class="-mx-2 space-y-1">
@@ -142,7 +142,7 @@
     </div>
     <!-- End Mobile Navbar -->
 
-    <div class="lg:pl-[18rem] lg:pr-4 lg:py-4 bg-background-950">
+    <div class="lg:pl-[17rem] lg:pr-4 lg:py-4 bg-background-950">
         <main class="pb-2 pt-4 lg:pt-8 relative bg-white lg:rounded-2xl lg:h-[calc(100vh-2rem)] grid grid-cols-1 overflow-hidden dashboard-content-grid z-10">
             @if($sticky_content)
             <div class="sticky w-full bg-white text-gray-900 z-10 top-0 px-4 lg:px-6 pb-4 max-w-full min-w-0 {{ $sticky_content_class }}">
