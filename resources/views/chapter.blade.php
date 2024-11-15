@@ -1,6 +1,6 @@
 <x-dashboard.skeleton :activeCourse="$course">
 	<x-slot:sticky_content>
-		<x-dashboard.search-bar></x-dashboard.search-bar>
+		<livewire:global-search />
 
 		<nav class="hidden sm:flex mt-6 min-w-0 max-w-full" aria-label="Breadcrumb">
 			<ol role="list" class="flex items-center space-x-2 max-w-full">
@@ -16,7 +16,7 @@
 						<svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 							<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
 						</svg>
-						<a href="{{route('chapter.view', $chapter->id)}}" class="ml-2 text-sm font-normal text-gray-600 hover:text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis min-w-0" aria-current="page">
+						<a href="{{route('chapter.view', $chapter->uuid)}}" class="ml-2 text-sm font-normal text-gray-600 hover:text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis min-w-0" aria-current="page">
                             {{$chapter->name}}
                         </a>
 					</div>

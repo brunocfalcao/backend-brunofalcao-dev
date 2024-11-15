@@ -1,6 +1,6 @@
 <x-dashboard.skeleton>
 	<x-slot:sticky_content>
-		<x-dashboard.search-bar></x-dashboard.search-bar>
+		<livewire:global-search />
 
 		<nav class="hidden sm:flex lg:mb-4 mt-6 min-w-0 max-w-full" aria-label="Breadcrumb">
 			<ol role="list" class="flex items-center space-x-2 max-w-full">

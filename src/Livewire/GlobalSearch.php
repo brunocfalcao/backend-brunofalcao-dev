@@ -2,6 +2,7 @@
 
 namespace BrunoFalcaoDev\Livewire;
 
+use Eduka\Cube\Models\Chapter;
 use Eduka\Cube\Models\Course;
 use Eduka\Cube\Models\Episode;
 use Livewire\Component;
@@ -24,6 +25,16 @@ class GlobalSearch extends Component
                     $results[] = [
                         'title' => $course->name,
                         'url' => route('course.view', $course->canonical),
+                    ];
+                }
+            }
+
+            $chapters = Chapter::where('name', 'LIKE', '%' . $this->query . '%')->get();
+            foreach ($chapters as $chapter) {
+                if (count($results) < $max_results) {
+                    $results[] = [
+                        'title' => $chapter->name,
+                        'url' => route('chapter.view', $chapter->uuid),
                     ];
                 }
             }
