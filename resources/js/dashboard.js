@@ -1,5 +1,7 @@
 $(document).ready(function () {
     $(document).on("click", ".fancy-toggle", function () {
+        if ($(this).hasClass("ignore-clicks")) return;
+
         let selector = "input[name=" + $(this).attr("data-controls") + "]";
         $(this)
             .parent()

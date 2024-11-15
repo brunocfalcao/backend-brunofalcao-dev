@@ -9,7 +9,7 @@
                 @foreach ($results as $result)
             
                     <li>
-                        <a href="#test" class="px-4 py-3.5 bg-white hover:bg-gray-100 text-gray-700 cursor-pointer flex items-center gap-2 @if($loop->first) rounded-t-2xl @elseif ($loop->last) rounded-b-2xl @endif">    
+                        <a href="{{$result['url']}}" class="px-4 py-3.5 bg-white hover:bg-gray-100 text-gray-700 cursor-pointer flex items-center gap-2 @if($loop->first) rounded-t-2xl @elseif ($loop->last) rounded-b-2xl @endif">    
                             @svg('heroicon-o-arrow-top-right-on-square', 'h-5 w-5 text-gray-500')
                             <span>{{$result['title']}}</span>
                         </a>

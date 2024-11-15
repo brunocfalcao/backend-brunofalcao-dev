@@ -139,6 +139,7 @@ $difficulty_badge_classes = [
 	let $carousel = null;
 	
 	$wire.on('render', () => {
+		ignore_clicks = false;
 		setTimeout(() => {
 			if($carousel != null)
 				$carousel.flickity('destroy');
@@ -148,6 +149,7 @@ $difficulty_badge_classes = [
     });
 
  	$($wire.el).find('input[type=checkbox]').change(function(){
+		$($wire.el).find('button.fancy-toggle').addClass('ignore-clicks');
 		$wire.set($(this).attr('wire:model.live'), $(this).prop('checked'));
 	});
 </script>
